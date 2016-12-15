@@ -19,6 +19,9 @@ ro.zygote.disable_gl_preload=true
 persist.tegra.didim.video = 5
 persist.tegra.didim.enable = 1
 persist.tegra.didim.normal = 3
+
+lpa.use-stagefright=false
+
 # Dalvik and other tweaks
 dalvik.vm.heapgrowthlimit=128m
 dalvik.vm.heapsize=174m

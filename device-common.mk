@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+# Local variables (can be duplicate from BoardConfig.mk)
+TARGET_NO_SUPERUSER := false
+
 PRODUCT_CHARACTERISTICS := tablet,nosdcard
 PRODUCT_AAPT_CONFIG := normal large
 PRODUCT_AAPT_PREF_CONFIG := tvdpi
@@ -182,4 +185,51 @@ $(call inherit-product, vendor/elan/grouper/elan-vendor.mk)
 $(call inherit-product, vendor/invensense/grouper/invensense-vendor.mk)
 $(call inherit-product, vendor/nvidia/grouper/nvidia-vendor.mk)
 $(call inherit-product-if-exists, vendor/widevine/arm-generic/widevine-vendor.mk)
+
+# nAOSP changes
+
+# Superuser
+ifneq ($(TARGET_NO_SUPERUSER),true)
+
+PRODUCT_PACKAGES += \
+    su
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    persist.sys.root_access=3
+
+endif
+
+PRODUCT_PACKAGES += \
+    Launcher3
+
+# Busybox
+PRODUCT_PACKAGES += \
+    busybox
+
+# Boot Animation
+PRODUCT_COPY_FILES += \
+    device/asus/grouper/bootanimation.zip:system/media/bootanimation.zip
+
+# ROM Updater
+ifeq ($(ROM_BUILD_NUM),)
+  $(error No ROM_BUILD_NUM defined. please export the value (export ROM_BUILD_NUM=xx))
+endif
+
+PRODUCT_PACKAGES += \
+    ROMUpdater
+
+# ViPER4Android
+PRODUCT_PACKAGES += \
+    ViPER4Android \
+    libv4a_fx_ics
+
+PRODUCT_COPY_FILES += \
+    device/asus/grouper/audio_effects.conf:system/etc/audio_effects.conf \
+    packages/apps/ViPER4AndroidFX/android_4.x-5.x/libs/armeabi/libV4AJniUtils.so:system/app/ViPER4Android/lib/arm/libV4AJniUtils.so
+
+# Backup Tool
+PRODUCT_COPY_FILES += \
+    device/asus/grouper/custom/backuptool/backuptool.sh:install/bin/backuptool.sh \
+    device/asus/grouper/custom/backuptool/backuptool.functions:install/bin/backuptool.functions \
+    device/asus/grouper/custom/backuptool/50-base.sh:system/addon.d/50-base.sh
 

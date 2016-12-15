@@ -36,7 +36,14 @@ TARGET_ARCH := arm
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_CPU_VARIANT := cortex-a9
 
+# Jack
+ifeq ($(ANDROID_JACK_VM_ARGS),)
+  ANDROID_JACK_VM_ARGS := -Dfile.encoding=UTF-8 -XX:+TieredCompilation -Xmx4096m
+endif
+
+# Filesystem
 TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
 
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 681574400
 # Disable journaling on system.img to save space.
@@ -103,3 +110,12 @@ TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 
 TARGET_NEEDS_PLATFORM_TEXT_RELOCATIONS := true
 BOARD_SEPOLICY_DIRS += device/asus/grouper/sepolicy
+
+#nAOSP
+
+# ViPER4Android
+VIPER4ANDROID_MODE := NEON
+
+# custom ota
+BOARD_CUSTOM_OTA_MK := device/asus/grouper/custom/customota.mk
+
