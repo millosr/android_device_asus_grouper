@@ -2,3 +2,5 @@
 allow audioserver audioserver_tmpfs:file execute;
 
 allow audioserver debugfs:file w_file_perms;
+
+allow audioserver rootfs:lnk_file getattr;
