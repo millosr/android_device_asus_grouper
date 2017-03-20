@@ -29,3 +29,7 @@ allow init kernel:system syslog_read;
 allow init system_file:file execute_no_trans;
 allow zygote init:unix_stream_socket { read write };
 allow init kernel:security { load_policy read_policy};
+
+# Allow mounting /per
+allow init oemfs:dir mounton;
+
