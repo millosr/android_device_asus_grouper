@@ -215,6 +215,15 @@ PRODUCT_PACKAGES += \
 PRODUCT_COPY_FILES += \
     device/asus/grouper/bootanimation.zip:system/media/bootanimation.zip
 
+# Wallpaper Picker
+PRODUCT_PACKAGES += \
+    WallpaperPicker
+
+# Live Wallpapers
+PRODUCT_PACKAGES += \
+    LiveWallpapersPicker \
+    librs_jni
+
 # ROM Updater
 ifeq ($(ROM_BUILD_NUM),)
   $(error No ROM_BUILD_NUM defined. please export the value (export ROM_BUILD_NUM=xx))
