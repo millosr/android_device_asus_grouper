@@ -243,6 +243,10 @@ PRODUCT_PACKAGES += \
     LiveWallpapersPicker \
     librs_jni
 
+# Jelly Browser
+PRODUCT_PACKAGES += \
+    Jelly
+
 # ROM Updater
 ifeq ($(ROM_BUILD_NUM),)
   $(error No ROM_BUILD_NUM defined. please export the value (export ROM_BUILD_NUM=xx))
