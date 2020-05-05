@@ -30,5 +30,5 @@ DEVICE_PACKAGE_OVERLAYS := \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.version.updater=nAOSProm-7.1.2-grouper-b$(ROM_BUILD_NUM) \
-    persist.rom.updater.uri=http://bit.ly/2eJPjC9
+    persist.rom.updater.uri=https://dl.dropboxusercontent.com/s/gy2a6fi1742sg51/updates-nAOSP-7.1.2-grouper.json?dl=0
 
