@@ -252,6 +252,9 @@ ifeq ($(ROM_BUILD_NUM),)
   $(error No ROM_BUILD_NUM defined. please export the value (export ROM_BUILD_NUM=xx))
 endif
 
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.naosp.version=7.1.2-b$(ROM_BUILD_NUM)
+
 PRODUCT_PACKAGES += \
     ROMUpdater
 
