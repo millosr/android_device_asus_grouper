@@ -1,0 +1,30 @@
+diff --git a/app/src/main/java/org/lineageos/jelly/webview/ChromeClient.java b/app/src/main/java/org/lineageos/jelly/webview/ChromeClient.java
+index b5aabf5..3b24159 100644
+--- a/app/src/main/java/org/lineageos/jelly/webview/ChromeClient.java
++++ b/app/src/main/java/org/lineageos/jelly/webview/ChromeClient.java
+@@ -57,12 +57,6 @@ class ChromeClient extends WebChromeClientCompat {
+         super.onProgressChanged(view, progress);
+     }
+ 
+-    @Override
+-    public void onThemeColorChanged(WebView view, int color) {
+-        mActivity.onThemeColorSet(color);
+-        super.onThemeColorChanged(view, color);
+-    }
+-
+     @Override
+     public void onReceivedTitle(WebView view, String title) {
+         mUrlBarController.onTitleReceived(title);
+diff --git a/app/src/main/java_lineage/org/lineageos/jelly/webview/WebViewCompat.java b/app/src/main/java_lineage/org/lineageos/jelly/webview/WebViewCompat.java
+index f3e0b16..faf71d3 100644
+--- a/app/src/main/java_lineage/org/lineageos/jelly/webview/WebViewCompat.java
++++ b/app/src/main/java_lineage/org/lineageos/jelly/webview/WebViewCompat.java
+@@ -23,7 +23,7 @@ public final class WebViewCompat {
+     }
+ 
+     public static boolean isThemeColorSupported(WebView webView) {
+-        return webView.isThemeColorSupported();
++        return false;
+     }
+ }
+ 
